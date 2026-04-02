@@ -1,10 +1,450 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My GitHub Page</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <p>Welcome to my GitHub Page.</p>
-  </body>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Doe — Portfolio</title>
+  <meta name="description" content="Portfolio de John Doe, étudiant en informatique disponible pour un stage ou une alternance." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #181816;
+      --bg-2:     #202020;
+      --bg-3:     #2a2a27;
+      --surface:  #262624;
+      --border:   rgba(255,255,255,0.11);
+      --text:     #f0ece3;
+      --muted:    #9a9590;
+      --accent:   #b4c4a6;
+      --accent-2: #d4c4aa;
+      --white:    #f8f4ed;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .display { font-family: 'Cormorant Garamond', serif; }
+    .mono    { font-family: 'DM Mono', monospace; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 24px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(24,24,22,0.97), transparent);
+      backdrop-filter: blur(2px);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; letter-spacing: 0.02em; color: var(--white); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── Hero ── */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 48px 80px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: flex-end; gap: 48px; }
+    .hero-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    .hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
+    .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(64px, 8vw, 110px); font-weight: 300; line-height: 0.95; letter-spacing: -0.01em; color: var(--white); }
+    .hero-name em { font-style: italic; color: var(--accent-2); }
+    .hero-right { padding-bottom: 12px; display: flex; flex-direction: column; gap: 32px; }
+    .hero-desc { font-size: 16px; color: var(--muted); max-width: 360px; line-height: 1.8; }
+    .hero-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-link { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); text-decoration: none; padding: 10px 20px; border: 1px solid var(--border); transition: all 0.25s; }
+    .hero-link:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-link.filled { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    .hero-link.filled:hover { background: transparent; color: var(--accent); }
+    .hero-divider { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--border); }
+    .hero-scroll { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); writing-mode: vertical-rl; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--muted); display: flex; align-items: center; gap: 16px; }
+    .hero-scroll::after { content: ''; display: block; width: 1px; height: 60px; background: var(--muted); animation: scrollLine 2s ease-in-out infinite; }
+    @keyframes scrollLine { 0%, 100% { opacity: 0.3; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.2); } }
+
+    /* ── Sections ── */
+    section { padding: 100px 48px; }
+    .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 64px; }
+    .section-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: var(--white); line-height: 1; }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── Timeline ── */
+    .timeline-grid { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 48px; }
+    .timeline-divider { background: var(--border); }
+    .timeline-col { display: flex; flex-direction: column; }
+    .timeline-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 40px; }
+    .timeline-item { padding: 28px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 100px 1fr; gap: 0 24px; }
+    .timeline-item:first-of-type { border-top: 1px solid var(--border); }
+    .timeline-year { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); padding-top: 4px; letter-spacing: 0.05em; white-space: pre-line; }
+    .timeline-role { font-size: 16px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+    .timeline-place { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 10px; }
+    .timeline-detail { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* ── Projects ── */
+    .projects-section { background: var(--bg-2); }
+    .filter-bar { display: flex; gap: 4px; margin-bottom: 48px; border: 1px solid var(--border); width: fit-content; padding: 4px; }
+    .filter-btn { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 20px; border: none; background: transparent; color: var(--muted); cursor: pointer; transition: all 0.2s; }
+    .filter-btn.active { background: var(--accent); color: var(--bg); }
+    .filter-btn:hover:not(.active) { color: var(--white); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2px; }
+
+    .project-card { background: var(--surface); display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit; transition: background 0.25s; position: relative; overflow: hidden; }
+    .project-card:hover { background: var(--bg-3); }
+    .project-img-wrap { width: 100%; height: 200px; overflow: hidden; position: relative; }
+    .project-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: brightness(0.75) saturate(0.7); }
+    .project-card:hover .project-img-wrap img { transform: scale(1.05); filter: brightness(0.85) saturate(0.85); }
+    .project-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, var(--surface) 100%); }
+    .project-body { padding: 28px 32px 32px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .project-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .project-cat { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+    .project-arrow { color: var(--muted); font-size: 18px; transition: transform 0.2s, color 0.2s; display: flex; }
+    .project-card:hover .project-arrow { transform: translate(4px, -4px); color: var(--accent); }
+    .project-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--white); line-height: 1.1; }
+    .project-desc { font-size: 13px; color: var(--muted); line-height: 1.75; flex: 1; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tech-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); }
+
+    /* ── Skills ── */
+    .skills-section { background: var(--bg); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .skill-group { background: var(--surface); padding: 40px; }
+    .skill-group-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
+    .skill-list { display: flex; flex-direction: column; }
+    .skill-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text); }
+    .skill-item:last-child { border-bottom: none; }
+    .skill-dot { width: 5px; height: 5px; background: var(--accent); flex-shrink: 0; }
+
+    /* ── Contact ── */
+    .contact-section { background: var(--bg-2); text-align: center; }
+    .contact-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 80px); font-weight: 300; font-style: italic; color: var(--white); margin-bottom: 16px; }
+    .contact-sub { font-size: 14px; color: var(--muted); margin-bottom: 48px; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; }
+    .contact-email { display: inline-flex; align-items: center; gap: 12px; font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--accent-2); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 4px; transition: color 0.2s; }
+    .contact-email:hover { color: var(--white); }
+
+    /* ── Footer ── */
+    footer { padding: 28px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg); }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── Fade-in ── */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 0 24px 64px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-scroll { display: none; }
+      section { padding: 72px 24px; }
+      .timeline-grid { grid-template-columns: 1fr; }
+      .timeline-divider { display: none; }
+      .skills-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React + Babel via CDN (no build step needed) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // ── Data ─────────────────────────────────────────────────────────────────
+    const PROJECTS = [
+      {
+        title: "Portfolio Personnel",
+        category: "Web",
+        desc: "Portfolio développé avec React, intégrant des animations fluides et une esthétique éditoriale soignée.",
+        stack: ["React", "Tailwind", "Framer Motion"],
+        github: "#",
+        img: "https://images.unsplash.com/photo-1545670723-196ed0954986?w=800&q=80",
+      },
+      {
+        title: "IA Conversationnelle",
+        category: "IA",
+        desc: "Pipeline NLP de bout en bout pour la classification d'intentions et la gestion de dialogues avec des modèles transformers.",
+        stack: ["Python", "PyTorch", "HuggingFace"],
+        github: "#",
+        img: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
+      },
+      {
+        title: "Tableau de Bord Dev",
+        category: "Web",
+        desc: "Suivi en temps réel des contributions GitHub avec visualisations de données et indicateurs de productivité.",
+        stack: ["Next.js", "D3.js", "REST APIs"],
+        github: "#",
+        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      },
+      {
+        title: "Classificateur ML",
+        category: "IA",
+        desc: "Classificateur CNN entraîné sur un jeu de données personnalisé, atteignant 94 % de précision top-1.",
+        stack: ["Python", "TensorFlow", "OpenCV"],
+        github: "#",
+        img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80",
+      },
+    ];
+
+    const SKILLS = {
+      "Frontend":         ["React / Next.js", "TypeScript", "CSS / Tailwind", "Framer Motion", "D3.js"],
+      "Backend & Données":["Node.js", "Python", "PostgreSQL", "REST & GraphQL", "Docker"],
+      "IA / ML":          ["PyTorch", "TensorFlow", "HuggingFace", "scikit-learn", "Jupyter"],
+    };
+
+    const CATEGORIES = ["Tous", "Web", "IA", "Autre"];
+
+    // ── Hook: fade-in on scroll ───────────────────────────────────────────────
+    function useFadeIn() {
+      const ref = useRef(null);
+      useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const obs = new IntersectionObserver(
+          ([entry]) => { if (entry.isIntersecting) { el.classList.add("visible"); obs.disconnect(); } },
+          { threshold: 0.1 }
+        );
+        obs.observe(el);
+        return () => obs.disconnect();
+      }, []);
+      return ref;
+    }
+
+    // ── Icons ─────────────────────────────────────────────────────────────────
+    const ArrowUpRight = () => (
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M3 13L13 3M13 3H6M13 3V10"/>
+      </svg>
+    );
+
+    const GithubIcon = () => (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.96.57.1.78-.25.78-.55v-1.93c-3.2.7-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.67 1.24 3.32.95.1-.74.4-1.24.73-1.53-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.45.11-3.02 0 0 .97-.31 3.18 1.18a11.05 11.05 0 012.9-.39c.98 0 1.97.13 2.9.39 2.2-1.5 3.17-1.18 3.17-1.18.63 1.57.24 2.73.12 3.02.73.8 1.18 1.83 1.18 3.08 0 4.4-2.69 5.36-5.25 5.64.41.35.78 1.04.78 2.1v3.12c0 .3.2.66.79.55A11.51 11.51 0 0023.5 12c0-6.35-5.15-11.5-11.5-11.5z"/>
+      </svg>
+    );
+
+    const LinkedinIcon = () => (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8h4v13h-4V8zm7.5 0h3.6v1.77h.05c.5-.95 1.73-1.95 3.55-1.95 3.8 0 4.5 2.5 4.5 5.75V21h-4v-6.5c0-1.55-.03-3.54-2.16-3.54-2.16 0-2.49 1.69-2.49 3.43V21h-4V8z"/>
+      </svg>
+    );
+
+    // ── Project Card ──────────────────────────────────────────────────────────
+    function ProjectCard({ project }) {
+      const ref = useFadeIn();
+      return (
+        <a href={project.github} target="_blank" rel="noopener noreferrer"
+           className="project-card fade-in" ref={ref}>
+          <div className="project-img-wrap">
+            <img src={project.img} alt={project.title} loading="lazy" />
+          </div>
+          <div className="project-body">
+            <div className="project-card-top">
+              <span className="project-cat">{project.category}</span>
+              <span className="project-arrow"><ArrowUpRight /></span>
+            </div>
+            <h3 className="project-title">{project.title}</h3>
+            <p className="project-desc">{project.desc}</p>
+            <div className="project-stack">
+              {project.stack.map(t => <span key={t} className="tech-tag">{t}</span>)}
+            </div>
+          </div>
+        </a>
+      );
+    }
+
+    // ── App ───────────────────────────────────────────────────────────────────
+    function Portfolio() {
+      const [active, setActive] = useState("Tous");
+      const filtered = active === "Tous"
+        ? PROJECTS
+        : PROJECTS.filter(p => p.category === active);
+
+      const expRef     = useFadeIn();
+      const skillsRef  = useFadeIn();
+      const contactRef = useFadeIn();
+
+      return (
+        <>
+          {/* Nav */}
+          <nav>
+            <div className="nav-logo display">JD.</div>
+            <div className="nav-links">
+              {["Parcours", "Projets", "Competences", "Contact"].map(l => (
+                <a key={l} href={`#${l.toLowerCase()}`}>
+                  {l === "Competences" ? "Compétences" : l}
+                </a>
+              ))}
+            </div>
+          </nav>
+
+          {/* Hero */}
+          <section className="hero" id="top">
+            <div className="hero-scroll mono">Défiler</div>
+            <div className="hero-grid">
+              <div>
+                <p className="hero-tag mono">Informatique · Promotion 2026</p>
+                <h1 className="hero-name display">
+                  John<br /><em>Doe</em>
+                </h1>
+              </div>
+              <div className="hero-right">
+                <p className="hero-desc">
+                  Conception de solutions élégantes et performantes à l'intersection du génie logiciel et de l'apprentissage automatique. Disponible pour un stage ou une alternance.
+                </p>
+                <div className="hero-links">
+                  <a href="mailto:john.doe@email.com" className="hero-link filled mono">Me contacter</a>
+                  <a href="#" className="hero-link mono"><GithubIcon /> GitHub</a>
+                  <a href="#" className="hero-link mono"><LinkedinIcon /> LinkedIn</a>
+                </div>
+              </div>
+            </div>
+            <div className="hero-divider" />
+          </section>
+
+          {/* Parcours */}
+          <section id="parcours" style={{ background: "var(--bg)" }}>
+            <div className="section-header">
+              <span className="section-num mono">01</span>
+              <h2 className="section-title display">Parcours</h2>
+              <div className="section-line" />
+            </div>
+            <div className="timeline-grid fade-in" ref={expRef}>
+              <div className="timeline-col">
+                <p className="timeline-label mono">Expérience</p>
+                {[
+                  { year: "2025", role: "Stagiaire Ingénieur Logiciel", place: "Tech Company · Paris", detail: "Développement d'outils internes avec React et Node.js, réduisant le temps de révision de 30 %. Collaboration avec des ingénieurs seniors sur la conception d'API." },
+                  { year: "2024", role: "Contributeur Open Source",     place: "Divers · Remote",       detail: "Contributions de correctifs et de fonctionnalités à deux bibliothèques Python totalisant plus de 4 000 étoiles GitHub." },
+                ].map((e, i) => (
+                  <div key={i} className="timeline-item">
+                    <span className="timeline-year mono">{e.year}</span>
+                    <div>
+                      <p className="timeline-role">{e.role}</p>
+                      <p className="timeline-place mono">{e.place}</p>
+                      <p className="timeline-detail">{e.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="timeline-divider" />
+              <div className="timeline-col">
+                <p className="timeline-label mono">Formation</p>
+                {[
+                  { year: "2023 —\n2026", role: "Licence Informatique",    place: "Nom de l'université · Mention Très Bien", detail: "Cours principaux : Algorithmique, Apprentissage automatique, Systèmes distribués, Vision par ordinateur, Architecture logicielle." },
+                  { year: "2023",         role: "AWS Cloud Practitioner",  place: "Certification",                           detail: "Fondamentaux du cloud, services AWS essentiels et bonnes pratiques architecturales." },
+                ].map((e, i) => (
+                  <div key={i} className="timeline-item">
+                    <span className="timeline-year mono">{e.year}</span>
+                    <div>
+                      <p className="timeline-role">{e.role}</p>
+                      <p className="timeline-place mono">{e.place}</p>
+                      <p className="timeline-detail">{e.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Projets */}
+          <section id="projets" className="projects-section">
+            <div className="section-header">
+              <span className="section-num mono">02</span>
+              <h2 className="section-title display">Projets</h2>
+              <div className="section-line" />
+            </div>
+            <div className="filter-bar">
+              {CATEGORIES.map(cat => (
+                <button key={cat}
+                  className={`filter-btn mono${active === cat ? " active" : ""}`}
+                  onClick={() => setActive(cat)}>
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="projects-grid">
+              {filtered.map((p, i) => <ProjectCard key={i} project={p} />)}
+            </div>
+          </section>
+
+          {/* Compétences */}
+          <section id="competences" className="skills-section">
+            <div className="section-header">
+              <span className="section-num mono">03</span>
+              <h2 className="section-title display">Compétences</h2>
+              <div className="section-line" />
+            </div>
+            <div className="skills-grid fade-in" ref={skillsRef}>
+              {Object.entries(SKILLS).map(([cat, list]) => (
+                <div key={cat} className="skill-group">
+                  <p className="skill-group-title mono">{cat}</p>
+                  <div className="skill-list">
+                    {list.map(s => (
+                      <div key={s} className="skill-item">
+                        <div className="skill-dot" />{s}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Contact */}
+          <section id="contact" className="contact-section">
+            <div className="fade-in" ref={contactRef}>
+              <h2 className="contact-heading display">Travaillons ensemble.</h2>
+              <p className="contact-sub mono">Ouvert aux stages &amp; alternances · 2026</p>
+              <a href="mailto:john.doe@email.com" className="contact-email display">
+                john.doe@email.com <ArrowUpRight />
+              </a>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer>
+            <span className="footer-copy mono">© 2026 John Doe</span>
+            <div className="footer-links">
+              <a href="#">GitHub</a>
+              <a href="#">LinkedIn</a>
+              <a href="#">CV ↗</a>
+            </div>
+          </footer>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<Portfolio />);
+  </script>
+</body>
 </html>
