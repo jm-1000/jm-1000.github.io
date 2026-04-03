@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>John Doe — Portfolio</title>
-  <meta name="description" content="Portfolio de John Doe, étudiant en informatique disponible pour un stage ou une alternance." />
+  <title>Juari Marcolino — Portfolio</title>
+  <meta name="description" content="Portfolio de Juari Marcolino, étudiant en informatique disponible pour une alternance ou un stage." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -207,6 +207,48 @@
     const { useState, useEffect, useRef } = React;
 
     // ── Data ─────────────────────────────────────────────────────────────────
+    const EXPERIENCE = [
+      { 
+        year: "2025", 
+        role: "Stagiaire Ingénieur Logiciel", 
+        place: "Tech Company · Paris", 
+        detail: "Développement d'outils internes avec React et Node.js, réduisant le temps de révision de 30 %. Collaboration avec des ingénieurs seniors sur la conception d'API." 
+      },
+      { 
+        year: "2024", 
+        role: "Contributeur Open Source",     
+        place: "Divers · Remote",       
+        detail: "Contributions de correctifs et de fonctionnalités à deux bibliothèques Python totalisant plus de 4 000 étoiles GitHub." 
+      },
+    ];
+
+    const FORMATION = [
+      { 
+        year: "2025 —\n2026", 
+        role: "Première année du cycle d'ingénieur",    
+        place: "ISIMA - Clermont Auvergne INP", 
+        detail: "Cours principaux : Algorithmique et Structure des données, Architecture d'ordinateurs, Programmation en C, Base des données" 
+      },
+      { 
+        year: "2024",         
+        role: "Cisco Certified Network Associate (CCNA)",  
+        place: "Certification",                           
+        detail: "Fondamentaux du réseaux, connectivité IP, services réseaux, sécurité et automatisation" 
+      },
+      { 
+        year: "2022 -\n2025",         
+        role: "BUT Réseaux et Télécommunications, Parcours Cybersécurité",  
+        place: "Université Sorbonne Paris Nord",                           
+        detail: "Cours principaux : Administration réseaux et systèmes, Programmation en Python, Cybersécurité, Télécommunications" 
+      },
+      { 
+        year: "2020 -\n2021",         
+        role: "Licence 1 - Eléctronique et Télécommunications",  
+        place: "Université de Luanda, Angola",                           
+        detail: "Cours principaux : Eléctronique analogique et digitale, Analyse de circuit, Introduction à la programmation en C" 
+      }
+    ];
+
     const PROJECTS = [
       {
         title: "Portfolio Personnel",
@@ -324,7 +366,7 @@
         <>
           {/* Nav */}
           <nav>
-            <div className="nav-logo display">JD.</div>
+            <div className="nav-logo display">JM.</div>
             <div className="nav-links">
               {["Parcours", "Projets", "Competences", "Contact"].map(l => (
                 <a key={l} href={`#${l.toLowerCase()}`}>
@@ -339,19 +381,19 @@
             <div className="hero-scroll mono">Défiler</div>
             <div className="hero-grid">
               <div>
-                <p className="hero-tag mono">Informatique · Promotion 2026</p>
+                <p className="hero-tag mono">Informatique · Promotion 2025</p>
                 <h1 className="hero-name display">
-                  John<br /><em>Doe</em>
+                  Juari<br /><em>Marcolino</em>
                 </h1>
               </div>
               <div className="hero-right">
                 <p className="hero-desc">
-                  Conception de solutions élégantes et performantes à l'intersection du génie logiciel et de l'apprentissage automatique. Disponible pour un stage ou une alternance.
+                  Conception de solutions élégantes et performantes à l'intersection de l'ingénieurie réseaux systèmes et du génie logiciel. Disponible pour une alternance ou un stage.
                 </p>
                 <div className="hero-links">
-                  <a href="mailto:john.doe@email.com" className="hero-link filled mono">Me contacter</a>
-                  <a href="#" className="hero-link mono"><GithubIcon /> GitHub</a>
-                  <a href="#" className="hero-link mono"><LinkedinIcon /> LinkedIn</a>
+                  <a href="mailto:mfm925@outlook.com" className="hero-link filled mono">Me contacter</a>
+                  <a href="https://github.com/jm-1000" className="hero-link mono"><GithubIcon /> GitHub</a>
+                  <a href="https://www.linkedin.com/in/juari-m/" className="hero-link mono"><LinkedinIcon /> LinkedIn</a>
                 </div>
               </div>
             </div>
@@ -368,10 +410,7 @@
             <div className="timeline-grid fade-in" ref={expRef}>
               <div className="timeline-col">
                 <p className="timeline-label mono">Expérience</p>
-                {[
-                  { year: "2025", role: "Stagiaire Ingénieur Logiciel", place: "Tech Company · Paris", detail: "Développement d'outils internes avec React et Node.js, réduisant le temps de révision de 30 %. Collaboration avec des ingénieurs seniors sur la conception d'API." },
-                  { year: "2024", role: "Contributeur Open Source",     place: "Divers · Remote",       detail: "Contributions de correctifs et de fonctionnalités à deux bibliothèques Python totalisant plus de 4 000 étoiles GitHub." },
-                ].map((e, i) => (
+                {EXPERIENCE.map((e, i) => (
                   <div key={i} className="timeline-item">
                     <span className="timeline-year mono">{e.year}</span>
                     <div>
@@ -385,10 +424,7 @@
               <div className="timeline-divider" />
               <div className="timeline-col">
                 <p className="timeline-label mono">Formation</p>
-                {[
-                  { year: "2023 —\n2026", role: "Licence Informatique",    place: "Nom de l'université · Mention Très Bien", detail: "Cours principaux : Algorithmique, Apprentissage automatique, Systèmes distribués, Vision par ordinateur, Architecture logicielle." },
-                  { year: "2023",         role: "AWS Cloud Practitioner",  place: "Certification",                           detail: "Fondamentaux du cloud, services AWS essentiels et bonnes pratiques architecturales." },
-                ].map((e, i) => (
+                {FORMATION.map((e, i) => (
                   <div key={i} className="timeline-item">
                     <span className="timeline-year mono">{e.year}</span>
                     <div>
@@ -450,19 +486,19 @@
           <section id="contact" className="contact-section">
             <div className="fade-in" ref={contactRef}>
               <h2 className="contact-heading display">Travaillons ensemble.</h2>
-              <p className="contact-sub mono">Ouvert aux stages &amp; alternances · 2026</p>
-              <a href="mailto:john.doe@email.com" className="contact-email display">
-                john.doe@email.com <ArrowUpRight />
+              <p className="contact-sub mono">Ouvert aux alternances &amp; stages · 2026</p>
+              <a href="mailto:mfm925@outlook.com" className="contact-email display">
+                mfm925@outlook.com <ArrowUpRight />
               </a>
             </div>
           </section>
 
           {/* Footer */}
           <footer>
-            <span className="footer-copy mono">© 2026 John Doe</span>
+            <span className="footer-copy mono">© 2026 Juari Marcolino</span>
             <div className="footer-links">
-              <a href="#">GitHub</a>
-              <a href="#">LinkedIn</a>
+              <a href="https://github.com/jm-1000">GitHub</a>
+              <a href="https://www.linkedin.com/in/juari-m/">LinkedIn</a>
               <a href="#">CV ↗</a>
             </div>
           </footer>
