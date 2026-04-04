@@ -161,6 +161,10 @@
     .contact-section { background: var(--bg-2); text-align: center; }
     .contact-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 80px); font-weight: 300; font-style: italic; color: var(--white); margin-bottom: 16px; }
     .contact-sub { font-size: 14px; color: var(--muted); margin-bottom: 48px; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 48px; }
+    .contact-icon-link { display: inline-flex; align-items: center; gap: 14px; font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--accent-2); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 6px; transition: color 0.2s; }
+    .contact-icon-link svg { flex-shrink: 0; }
+    .contact-icon-link:hover { color: var(--white); }
     .contact-email { display: inline-flex; align-items: center; gap: 12px; font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--accent-2); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 4px; transition: color 0.2s; }
     .contact-email:hover { color: var(--white); }
 
@@ -391,9 +395,7 @@
                   Conception de solutions élégantes et performantes à l'intersection de l'ingénieurie réseaux systèmes et du génie logiciel. Disponible pour une alternance ou un stage.
                 </p>
                 <div className="hero-links">
-                  <a href="mailto:mfm925@outlook.com" className="hero-link filled mono">Me contacter</a>
-                  <a href="https://github.com/jm-1000" className="hero-link mono"><GithubIcon /> GitHub</a>
-                  <a href="https://www.linkedin.com/in/juari-m/" className="hero-link mono"><LinkedinIcon /> LinkedIn</a>
+                  <a href="#contact" className="hero-link filled mono">Me contacter</a>
                 </div>
               </div>
             </div>
@@ -487,18 +489,24 @@
             <div className="fade-in" ref={contactRef}>
               <h2 className="contact-heading display">Travaillons ensemble.</h2>
               <p className="contact-sub mono">Ouvert aux alternances &amp; stages · 2026</p>
-              <a href="mailto:mfm925@outlook.com" className="contact-email display">
-                ME CONTACTER <ArrowUpRight />
-              </a>
+              
+          <div className="contact-links">
+                <a href="mailto:mfm925@outlook.com" className="contact-icon-link display" aria-label="Email">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+                  mfm925@outlook.com
+                </a>
+                <a href="https://www.linkedin.com/in/juari-m/" target="_blank" rel="noopener noreferrer" className="contact-icon-link display" aria-label="LinkedIn">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8h4v13h-4V8zm7.5 0h3.6v1.77h.05c.5-.95 1.73-1.95 3.55-1.95 3.8 0 4.5 2.5 4.5 5.75V21h-4v-6.5c0-1.55-.03-3.54-2.16-3.54-2.16 0-2.49 1.69-2.49 3.43V21h-4V8z"/></svg>
+                  LinkedIn
+                </a>
+              </div>
             </div>
           </section>
-
-          {/* Footer */}
+ 
           <footer>
             <span className="footer-copy mono">© 2026 Juari Marcolino</span>
             <div className="footer-links">
-              <a href="https://github.com/jm-1000">GitHub</a>
-              <a href="https://www.linkedin.com/in/juari-m/">LinkedIn</a>
+              <a href="https://github.com/jm-1000" aria-label="GitHub"><GithubIcon /></a>
               <a href="#">CV ↗</a>
             </div>
           </footer>
