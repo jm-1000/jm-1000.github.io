@@ -247,12 +247,28 @@
 
     const PROJECTS = [
       {
+        title: "Sondes PRTG",
+        category: "DEV",
+        desc: "Dévélopement des scripts permettant à la plateforme PRTG de suivre en temps réel l'état des serveurs cryptomonnaie.",
+        stack: ["Python", "JSON", "Socket"],
+        github: "https://github.com/jm-1000/Python-PRTG-Custom-Sensor-for-Antminer-and-Iceriver-Monitoring/tree/main",
+        img: "img/prtg.png",
+      },
+      {
         title: "Infrastructure réseau sécurisée",
         category: "Réseaux & Systèmes",
         desc: "Mise en œuvre d'une architecture 3 tiers (haute disponibilité) avec déploiement centralisé et automatisé.",
-        stack: ["Cisco", "Fortigate", "GNS3", "Ansible"],
-        github: "#",
+        stack: ["Cisco", "Fortigate", "Ansible", "GNS3" ],
+        github: "",
         img: "img/net_auto.png",
+      },
+      {
+        title: "Serveur PXE conteneurisé",
+        category: "DEV",
+        desc: "Dévélopement d'un conteneur hébergant un serveur PXE pour le déploiement simultané d'image Linux sur plusieurs machines.",
+        stack: ["Docker", "Bash"],
+        github: "https://github.com/jm-1000/PXE-SERVER-WITH-DOCKER",
+        img: "img/pxe.png",
       },
       {
         title: "Réseau entreprise",
@@ -267,30 +283,14 @@
         category: "Réseaux & Systèmes",
         desc: "Déployer un réseau avec la mise en œuvre de l’authentification des utilisateurs WiFi via un portail captif.",
         stack: ["TP-Link", "Cisco", "Pfsense", "FreeRadius", "MySQL"],
-        github: "#",
+        github: "",
         img: "img/net_cafe.png",
-      },
-      {
-        title: "Serveur PXE conteneurisé",
-        category: "DEV",
-        desc: "Dévélopement d'un conteneur hébergant un serveur PXE pour le déploiement simultané d'image Linux sur plusieurs machines.",
-        stack: ["Docker", "Bash"],
-        github: "https://github.com/jm-1000/PXE-SERVER-WITH-DOCKER",
-        img: "img/pxe.png",
-      },
-      {
-        title: "Sondes PRTG",
-        category: "DEV",
-        desc: "Dévélopement des scripts permettant à la plateforme PRTG de suivre en temps réel l'état des serveurs cryptomonnaie.",
-        stack: ["Python", "JSON", "Socket"],
-        github: "https://github.com/jm-1000/Python-PRTG-Custom-Sensor-for-Antminer-and-Iceriver-Monitoring/tree/main",
-        img: "img/prtg.png",
       },
       {
         title: "Mini Whatsapp",
         category: "DEV",
         desc: "Dévélopement full-stack d'une application web permettant une communication en temps réel entre les utilisateurs.",
-        stack: ["Python", "Django", "WebSocket", "HTTP/CSS", "Javascript", "Jinja2"],
+        stack: ["Python", "Django", "Websocket", "HTTP/CSS", "Javascript", "Jinja2"],
         github: "https://github.com/jm-1000/Mini-Whatsapp/tree/main",
         img: "img/chat.png",
       },
@@ -303,7 +303,7 @@
       "Dev": ["Git", "Python", "C/C++", "HTML/CSS/JS", "Bash"],
     };
 
-    const CATEGORIES = ["Tous", "Réseaux & Systèmes", "DEV", "Autre"];
+    const CATEGORIES = ["Tous", "Réseaux & Systèmes", "DEV"];
 
     // ── Hook: fade-in on scroll ───────────────────────────────────────────────
     function useFadeIn() {
@@ -420,7 +420,7 @@
             </div>
             <div className="timeline-grid fade-in" ref={expRef}>
               <div className="timeline-col">
-                <p className="timeline-label mono">Expérience</p>
+                <p className="timeline-label mono">Expériences</p>
                 {EXPERIENCE.map((e, i) => (
                   <div key={i} className="timeline-item">
                     <span className="timeline-year mono">{e.year}</span>
@@ -434,7 +434,7 @@
               </div>
               <div className="timeline-divider" />
               <div className="timeline-col">
-                <p className="timeline-label mono">Formation</p>
+                <p className="timeline-label mono">Formations</p>
                 {FORMATION.map((e, i) => (
                   <div key={i} className="timeline-item">
                     <span className="timeline-year mono">{e.year}</span>
