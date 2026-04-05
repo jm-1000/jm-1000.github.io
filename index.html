@@ -69,7 +69,7 @@
       min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
       padding: 0 48px 80px; position: relative;
       background-color: var(--bg);
-      background-image: url('./hero.gif');
+      background-image: url('img/hero.gif');
       background-size: cover; background-position: center;
     }
     .hero::before {
@@ -247,47 +247,63 @@
 
     const PROJECTS = [
       {
-        title: "Portfolio Personnel",
-        category: "Web",
-        desc: "Portfolio développé avec React, intégrant des animations fluides et une esthétique éditoriale soignée.",
-        stack: ["React", "Tailwind", "Framer Motion"],
+        title: "Infrastructure réseau sécurisée",
+        category: "Réseaux & Systèmes",
+        desc: "Mise en œuvre d'une architecture 3 tiers (haute disponibilité) avec déploiement centralisé et automatisé.",
+        stack: ["Cisco", "Fortigate", "GNS3", "Ansible"],
         github: "#",
-        img: "https://images.unsplash.com/photo-1545670723-196ed0954986?w=800&q=80",
+        img: "img/net_auto.png",
       },
       {
-        title: "IA Conversationnelle",
-        category: "IA",
-        desc: "Pipeline NLP de bout en bout pour la classification d'intentions et la gestion de dialogues avec des modèles transformers.",
-        stack: ["Python", "PyTorch", "HuggingFace"],
-        github: "#",
-        img: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
+        title: "Réseau entreprise",
+        category: "Réseaux & Systèmes",
+        desc: "Concevoir une architecture réseau d’entreprise robuste, intégrant à la fois performance, sécurité et haute disponibilité. Le projet couvre l’ensemble des briques essentielles d’un réseau professionnel moderne.",
+        stack: ["Cisco", "PacketTracer"],
+        github: "https://github.com/jm-1000/Complete-Enterprise-Network-Project-with-PacketTracer/tree/main",
+        img: "img/ccna.png",
       },
       {
-        title: "Tableau de Bord Dev",
-        category: "Web",
-        desc: "Suivi en temps réel des contributions GitHub avec visualisations de données et indicateurs de productivité.",
-        stack: ["Next.js", "D3.js", "REST APIs"],
+        title: "Réseau pour un petit café",
+        category: "Réseaux & Systèmes",
+        desc: "Déployer un réseau avec la mise en œuvre de l’authentification des utilisateurs WiFi via un portail captif.",
+        stack: ["TP-Link", "Cisco", "Pfsense", "FreeRadius", "MySQL"],
         github: "#",
-        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+        img: "img/net_cafe.png",
       },
       {
-        title: "Classificateur ML",
-        category: "IA",
-        desc: "Classificateur CNN entraîné sur un jeu de données personnalisé, atteignant 94 % de précision top-1.",
-        stack: ["Python", "TensorFlow", "OpenCV"],
-        github: "#",
-        img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80",
+        title: "Serveur PXE conteneurisé",
+        category: "DEV",
+        desc: "Dévélopement d'un conteneur hébergant un serveur PXE pour le déploiement simultané d'image Linux sur plusieurs machines.",
+        stack: ["Docker", "Bash"],
+        github: "https://github.com/jm-1000/PXE-SERVER-WITH-DOCKER",
+        img: "img/pxe.png",
+      },
+      {
+        title: "Sondes PRTG",
+        category: "DEV",
+        desc: "Dévélopement des scripts permettant à la plateforme PRTG de suivre en temps réel l'état des serveurs cryptomonnaie.",
+        stack: ["Python", "JSON", "Socket"],
+        github: "https://github.com/jm-1000/Python-PRTG-Custom-Sensor-for-Antminer-and-Iceriver-Monitoring/tree/main",
+        img: "img/prtg.png",
+      },
+      {
+        title: "Mini Whatsapp",
+        category: "DEV",
+        desc: "Dévélopement full-stack d'une application web permettant une communication en temps réel entre les utilisateurs.",
+        stack: ["Python", "Django", "WebSocket", "HTTP/CSS", "Javascript", "Jinja2"],
+        github: "https://github.com/jm-1000/Mini-Whatsapp/tree/main",
+        img: "img/chat.png",
       },
     ];
 
     const SKILLS = {
       "Réseaux": ["VLAN", "Routage", "DHCP", "DNS", "NAT", "VoIP", "RADIUS", "SNMP", "ACL"],
-      "Systèmes": ["Linux", "Windows", "Proxmox", "VMware ESXi",  "Zabbix", "PRTG", "Docker"],
+      "Systèmes": ["Linux", "Windows", "Active Directory", "Proxmox", "VMware ESXi",  "Zabbix", "PRTG", "Docker"],
       "Cybersécurité": ["Gestion d’accès", "DMZ", "VPN", "IDS/IPS", "Pentesting"],
-      "Dev": ["Git", "Python", "C/C++", "HTML/CSS/JS"],
+      "Dev": ["Git", "Python", "C/C++", "HTML/CSS/JS", "Bash"],
     };
 
-    const CATEGORIES = ["Tous", "Web", "IA", "Autre"];
+    const CATEGORIES = ["Tous", "Réseaux & Systèmes", "DEV", "Autre"];
 
     // ── Hook: fade-in on scroll ───────────────────────────────────────────────
     function useFadeIn() {
