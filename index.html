@@ -221,7 +221,7 @@
     const FORMATION = [
       { 
         year: "2025 -\n2026", 
-        role: "Première année du cycle d'ingénieur",    
+        role: "Première année du cycle d'ingénieur Informatique",    
         place: "ISIMA - Clermont Auvergne INP", 
         detail: "Cours principaux : Algorithmique et structure des données, Architecture d'ordinateurs, Programmation en C, Base des données" 
       },
@@ -531,6 +531,15 @@
     }
 
     ReactDOM.createRoot(document.getElementById("root")).render(<Portfolio />);
+
+    // Scroll to hash anchor after React renders
+    setTimeout(() => {
+      const hash = window.location.hash.slice(1);
+      if (hash) {
+        const el = document.getElementById(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
   </script>
 </body>
 </html>
