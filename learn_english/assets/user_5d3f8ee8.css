@@ -1,0 +1,113 @@
+.mv-user {
+	/*border: solid 2px darkblue;
+	background-color: #fff;*/
+
+	font-family: Open Sans;
+	margin: 80px 1px -10px 0;
+	letter-spacing: -0.01em;
+}
+.mv-user.desktop {
+	color: #333;
+	float: right;
+	font-size: 14px;
+	text-align: right;
+}
+.mv-user.desktop .avatar {
+	border-radius: 13px;
+	display: inline;
+	height: 27px;
+	margin: 0 10px -8px 0;
+	width: 27px;
+}
+.mv-user.desktop .nome,
+.mv-user.desktop .nome a {
+	border: none;
+	background: none;
+	color: #333;
+	font-weight: normal;
+	letter-spacing: -0.03em;
+	opacity: 1 !important;
+	padding: 0;
+}
+.mv-user.desktop .nome a:hover {
+	color: #333;
+	cursor: pointer;
+	text-decoration: underline !important;
+}
+.mv-user.desktop .separador {
+	border-left: 1px solid #CCC;
+	margin: 0 9px;
+}
+.mv-user.desktop .sair,
+.mv-user.desktop .sair:hover {
+	border: none;
+	background: none;
+	color: #333;
+	font-weight: bold;
+	letter-spacing: -0.03em;
+	padding: 0;
+}
+.mv-user.desktop .sair:hover {
+	color: #DF5047;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.mv-user.mobile {
+	bottom: 45px;
+	color: #FFF;
+	font-size: 18px;
+	font-weight: 600;
+	left: 0;
+	letter-spacing: -0.03em;
+	padding: 10px 30px 0 30px;
+	position: absolute;
+	width: 100%;
+}
+.mv-user.mobile .linha {
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	margin-bottom: 28px;
+	width: 100%;
+}
+.mv-user.mobile .avatar {
+	border: 2px solid #FFF;
+	border-radius: 26px;
+	display: inline;
+	height: 53px;
+	margin: 0 15px -9px 0;
+	width: 53px;
+}
+.mv-user.mobile .nome {
+	display: inline-block;
+	line-height: 25px;
+}
+.mv-user.mobile .nome a {
+	color: #FFF !important;
+}
+.mv-user.mobile .separador {
+	border-left: 2px solid rgba(255, 255, 255, 0.4);
+	font-size: 14px;
+	margin: 0 10px;
+	padding: 0;
+}
+.mv-user.mobile .sair,
+.mv-user.mobile .sair:hover {
+	border: none;
+	background: none;
+	color: #FFF !important;
+	font-weight: 600;
+	letter-spacing: -0.03em;
+	padding: 0;
+}
+.mv-user.mobile .sair:hover {
+	text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+	.mv-user.desktop {
+		display: none;
+	}
+	.mv-user.mobile {
+		display: block;
+	}
+}
